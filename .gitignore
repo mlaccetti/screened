@@ -36,5 +36,5 @@ out/
 ### VS Code ###
 .vscode/
 
-# script for launching
-/run.sh
+# props we shouldn't have in git
+config/application.properties
