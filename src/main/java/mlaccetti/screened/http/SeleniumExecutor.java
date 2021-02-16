@@ -31,6 +31,7 @@ public class SeleniumExecutor {
 
     final ChromeOptions options = new ChromeOptions();
     options.setExperimentalOption("prefs", chromePrefs);
+    options.addArguments("--headless");
 
     final WebDriver driver = new ChromeDriver(options);
     final WebDriverWait wait = new WebDriverWait(driver, 10);
