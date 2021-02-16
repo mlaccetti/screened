@@ -33,7 +33,7 @@ public class EmailResults {
     email.setTo("michael+covid-result@laccetti.com");
     email.setBcc(new String[]{"analobo.me@gmail.com", "michael@laccetti.com"});
     email.setSubject("Isabella Laccetti Lobo - " + today);
-    email.setText("Attached is Isabella's results for today.");
+    email.setText("Attached are Isabella's results for today.");
 
     final FileSystemResource resultFile = new FileSystemResource(new File(appTemp.getDir(), String.format("COVID-19 school_child care screening result - %s.pdf", today)));
     email.addAttachment(Objects.requireNonNull(resultFile.getFilename()), resultFile);
