@@ -85,7 +85,7 @@ public class SeleniumExecutor {
     resultsNoButton.click();
     wait.until(ExpectedConditions.urlContains("/approved"));
 
-    final WebElement downloadResultsLink = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(text(),'Download results (PDF)')]")));
+    final WebElement downloadResultsLink = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(text(),'Download result (PDF)')]")));
     log.info("Clicking download results link.");
     downloadResultsLink.click();
 
