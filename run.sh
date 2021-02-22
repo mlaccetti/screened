@@ -1,3 +1,15 @@
 #!/usr/bin/env bash
 
-gradle bootRun
+pushd () {
+	command pushd "$@" > /dev/null
+}
+
+popd () {
+	command popd "$@" > /dev/null
+}
+
+pushd "$(dirname "$0")"
+
+./gradlew bootRun
+
+popd

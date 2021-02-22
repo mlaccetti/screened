@@ -42,7 +42,6 @@ public class SeleniumExecutor {
     log.info("Clicking 'start screening' button.");
     startScreeningButton.click();
 
-
     final WebElement guardianRadioButton = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@id='guardian']")));
     log.info("Selecting 'guardian' input.");
     guardianRadioButton.click();
@@ -50,25 +49,16 @@ public class SeleniumExecutor {
     final WebElement guardianContinueButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Continue')]")));
     log.info("Clicking 'guardian' continue button.");
     guardianContinueButton.click();
-    wait.until(ExpectedConditions.urlContains("/zone"));
-
-    final WebElement liveInTorontoButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Yes')]")));
-    log.info("Clicking 'Live in Toronto - Yes' button.");
-    liveInTorontoButton.click();
-    wait.until(ExpectedConditions.urlContains("/symptoms-kids"));
-
-    final WebElement noneOfTheAboveInput = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@id='none_of_the_above']")));
-    log.info("Clicking 'none of the above' input.");
-    noneOfTheAboveInput.click();
-
-    final WebElement noneOfTheAboveContinue = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Continue')]")));
-    log.info("Clicking 'none of the above' continue button.");
-    noneOfTheAboveContinue.click();
     wait.until(ExpectedConditions.urlContains("/travel"));
 
     final WebElement outsideButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'No')]")));
     log.info("Clicking 'no' to travelling outside of Canada button.");
     outsideButton.click();
+    wait.until(ExpectedConditions.urlContains("/doctor-self-isolate"));
+
+    final WebElement isolatingButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'No')]")));
+    log.info("Clicking 'no' to being told to self-isolate button.");
+    isolatingButton.click();
     wait.until(ExpectedConditions.urlContains("/contact"));
 
     final WebElement closeContactButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'No')]")));
@@ -79,11 +69,20 @@ public class SeleniumExecutor {
     final WebElement covidAlertButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'No')]")));
     log.info("Clicking 'no' to Covid alert notification button.");
     covidAlertButton.click();
-    wait.until(ExpectedConditions.urlContains("/doctor-self-isolate"));
+    wait.until(ExpectedConditions.urlContains("/symptoms-kids"));
+    
+    final WebElement noneOfTheAboveInput = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@id='none_of_the_above']")));
+    log.info("Clicking 'none of the above' input.");
+    noneOfTheAboveInput.click();
 
-    final WebElement isolatingButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'No')]")));
-    log.info("Clicking 'no' to being told to self-isolate button.");
-    isolatingButton.click();
+    final WebElement noneOfTheAboveContinue = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Continue')]")));
+    log.info("Clicking 'none of the above' continue button.");
+    noneOfTheAboveContinue.click();
+    wait.until(ExpectedConditions.urlContains("/covid-test"));
+
+    final WebElement resultsNoButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'No')]")));
+    log.info("Clicking 'no' to live with or waiting for results button.");
+    resultsNoButton.click();
     wait.until(ExpectedConditions.urlContains("/approved"));
 
     final WebElement downloadResultsLink = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(text(),'Download results (PDF)')]")));
@@ -91,7 +90,6 @@ public class SeleniumExecutor {
     downloadResultsLink.click();
 
     watchForDownload();
-
 
     driver.close();
   }
