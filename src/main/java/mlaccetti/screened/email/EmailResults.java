@@ -30,9 +30,9 @@ public class EmailResults {
     final String today = dateFormat.format(new Date());
 
     email.setFrom("michael@laccetti.com");
-    email.setTo("michael+screening@laccetti.com");
-    // email.setTo("hmshealthscreening@gmail.com");
-    // email.setBcc(new String[]{"analobo.me@gmail.com", "michael@laccetti.com"});
+    // email.setTo("michael+screening@laccetti.com");
+    email.setTo("hmshealthscreening@gmail.com");
+    email.setBcc(new String[]{"analobo.me@gmail.com", "michael@laccetti.com"});
     email.setSubject("Isabella Laccetti Lobo - " + today);
     email.setText("Attached are Isabella's results for today.");
 
