@@ -50,25 +50,21 @@ public class SeleniumExecutor {
     final WebElement guardianContinueButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Continue')]")));
     log.info("Clicking 'guardian' continue button.");
     guardianContinueButton.click();
-    wait.until(ExpectedConditions.urlContains("/zone"));
+    wait.until(ExpectedConditions.urlContains("/vaccinated"));
 
-    final WebElement liveInTorontoButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Yes')]")));
-    log.info("Clicking 'Live in Toronto - Yes' button.");
-    liveInTorontoButton.click();
-    wait.until(ExpectedConditions.urlContains("/symptoms-kids"));
+    final WebElement vaccinatedOrPositive = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'No')]")));
+    log.info("Clicking 'Fully vaccinated or tested positive' no button.");
+    vaccinatedOrPositive.click();
+    wait.until(ExpectedConditions.urlContains("/travel-unvaccinated"));
 
-    final WebElement noneOfTheAboveInput = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@id='none_of_the_above']")));
-    log.info("Clicking 'none of the above' input.");
-    noneOfTheAboveInput.click();
+    final WebElement travelledOutsideOfCanadaButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'No')]")));
+    log.info("Clicking 'no' to travelling outside of Canada.");
+    travelledOutsideOfCanadaButton.click();
+    wait.until(ExpectedConditions.urlContains("/doctor-self-isolate"));
 
-    final WebElement noneOfTheAboveContinue = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Continue')]")));
-    log.info("Clicking 'none of the above' continue button.");
-    noneOfTheAboveContinue.click();
-    wait.until(ExpectedConditions.urlContains("/travel"));
-
-    final WebElement outsideButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'No')]")));
-    log.info("Clicking 'no' to travelling outside of Canada button.");
-    outsideButton.click();
+    final WebElement currentlyIsolatingButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'No')]")));
+    log.info("Clicking 'no' to should be currently isolating.");
+    currentlyIsolatingButton.click();
     wait.until(ExpectedConditions.urlContains("/contact"));
 
     final WebElement closeContactButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'No')]")));
@@ -77,21 +73,36 @@ public class SeleniumExecutor {
     wait.until(ExpectedConditions.urlContains("/covid-alert"));
 
     final WebElement covidAlertButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'No')]")));
-    log.info("Clicking 'no' to Covid alert notification button.");
+    log.info("Clicking 'no' to having a covid alert notification button.");
     covidAlertButton.click();
-    wait.until(ExpectedConditions.urlContains("/doctor-self-isolate"));
+    wait.until(ExpectedConditions.urlContains("/covid-alert"));
+
+    final WebElement noneOfTheAboveInput = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@id='none_of_the_above']")));
+    log.info("Clicking 'none of the above' input.");
+    noneOfTheAboveInput.click();
+
+    final WebElement noneOfTheAboveContinue = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Continue')]")));
+    log.info("Clicking 'none of the above' continue button.");
+    noneOfTheAboveContinue.click();
+    wait.until(ExpectedConditions.urlContains("/covid-test"));
 
     final WebElement isolatingButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'No')]")));
-    log.info("Clicking 'no' to being told to self-isolate button.");
+    log.info("Clicking 'no' to living with folks currently experiencing symptoms.");
     isolatingButton.click();
+    wait.until(ExpectedConditions.urlContains("/rapid-test"));
+
+    final WebElement testedPositiveButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'No')]")));
+    log.info("Clicking 'no' to tested positive in last ten days.");
+    testedPositiveButton.click();
     wait.until(ExpectedConditions.urlContains("/approved"));
 
-    final WebElement downloadResultsLink = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[contains(text(),'Download results (PDF)')]")));
+    log.info("All buttons clicked, downloading results.");
+
+    final WebElement downloadResultsLink = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(text(),'Download result (PDF)')]")));
     log.info("Clicking download results link.");
     downloadResultsLink.click();
 
     watchForDownload();
-
 
     driver.close();
   }
