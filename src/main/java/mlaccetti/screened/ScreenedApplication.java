@@ -15,6 +15,8 @@ import org.springframework.context.annotation.Configuration;
 @SpringBootApplication
 @Log
 public class ScreenedApplication implements CommandLineRunner {
+  private static final String OS = System.getProperty("os.name").toLowerCase();
+
   @Autowired
   private SeleniumExecutor executor;
 
@@ -25,6 +27,10 @@ public class ScreenedApplication implements CommandLineRunner {
   private Cleanup cleanup;
 
 	public static void main(String[] args) {
+    if (isUnix()) {
+      System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
+    }
+
 		SpringApplication.run(ScreenedApplication.class, args);
 	}
 
@@ -52,4 +58,10 @@ public class ScreenedApplication implements CommandLineRunner {
     log.info("PDF downloaded, sending email.");
     emailer.send();
   }
+
+  private static boolean isUnix() {
+    return (OS.indexOf("nix") >= 0
+            || OS.indexOf("nux") >= 0
+            || OS.indexOf("aix") > 0);
+}
 }

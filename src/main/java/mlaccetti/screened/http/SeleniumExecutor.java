@@ -31,7 +31,7 @@ public class SeleniumExecutor {
 
     final ChromeOptions options = new ChromeOptions();
     options.setExperimentalOption("prefs", chromePrefs);
-    options.addArguments("--headless");
+    options.addArguments("--headless", "--disable-gpu");
 
     final WebDriver driver = new ChromeDriver(options);
     final WebDriverWait wait = new WebDriverWait(driver, 10);
@@ -41,7 +41,6 @@ public class SeleniumExecutor {
     final WebElement startScreeningButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[text()=\"Start school screening\"]")));
     log.info("Clicking 'start screening' button.");
     startScreeningButton.click();
-
 
     final WebElement guardianRadioButton = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@id='guardian']")));
     log.info("Selecting 'guardian' input.");

@@ -35,3 +35,6 @@ out/
 
 ### VS Code ###
 .vscode/
+
+# props we shouldn't have in git
+config/application.properties
