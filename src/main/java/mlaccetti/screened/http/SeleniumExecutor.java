@@ -39,11 +39,11 @@ public class SeleniumExecutor {
     driver.get("https://covid-19.ontario.ca/school-screening/");
 
     final WebElement startScreeningButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[text()=\"Start school screening\"]")));
-    log.info("Clicking 'start screening' button.");
+    log.info("Clicking 'start school screening' button.");
     startScreeningButton.click();
 
     final WebElement guardianRadioButton = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@id='guardian']")));
-    log.info("Selecting 'guardian' input.");
+    log.info("Selecting 'guardian' input for 'taking screen as'.");
     guardianRadioButton.click();
 
     final WebElement guardianContinueButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Continue')]")));
@@ -54,7 +54,7 @@ public class SeleniumExecutor {
     final WebElement vaccinatedOrPositive = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'No')]")));
     log.info("Clicking 'Fully vaccinated or tested positive' no button.");
     vaccinatedOrPositive.click();
-    wait.until(ExpectedConditions.urlContains("/travel-unvaccinated"));
+    wait.until(ExpectedConditions.urlContains("/travel"));
 
     final WebElement travelledOutsideOfCanadaButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'No')]")));
     log.info("Clicking 'no' to travelling outside of Canada.");
