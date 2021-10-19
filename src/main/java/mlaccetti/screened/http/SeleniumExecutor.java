@@ -31,7 +31,7 @@ public class SeleniumExecutor {
 
     final ChromeOptions options = new ChromeOptions();
     options.setExperimentalOption("prefs", chromePrefs);
-    options.addArguments("--headless", "--disable-gpu");
+    options.addArguments("--headless", "--disable-gpu", "--disable-crash-reporter");
 
     final WebDriver driver = new ChromeDriver(options);
     final WebDriverWait wait = new WebDriverWait(driver, 10);
