@@ -1,12 +1,11 @@
 plugins {
-	id 'org.springframework.boot' version '2.4.2'
+	id 'org.springframework.boot' version '2.6.2'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
 }
 
 group = 'mlaccetti'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '15'
 
 configurations {
 	compileOnly {
@@ -19,12 +18,15 @@ repositories {
 }
 
 dependencies {
-  implementation 'org.springframework.boot:spring-boot-starter-mail:2.4.2'
+  implementation 'org.springframework.boot:spring-boot-starter-mail:2.6.2'
 
-  implementation 'org.seleniumhq.selenium:selenium-chrome-driver:3.141.59'
-  implementation 'org.seleniumhq.selenium:selenium-support:3.141.59'
+  implementation 'io.github.bonigarcia:webdrivermanager:5.0.3'
+  implementation 'org.seleniumhq.selenium:selenium-api:4.1.1'
+  implementation 'org.seleniumhq.selenium:selenium-remote-driver:4.1.1'
+  implementation 'org.seleniumhq.selenium:selenium-support:4.1.1'
+  implementation 'org.seleniumhq.selenium:selenium-edge-driver:4.1.1'
 
-	compileOnly 'org.projectlombok:lombok'
+  compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 
 	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
